@@ -1,11 +1,39 @@
 import React, { Component } from "react";
-import { CardWrapper, CardHeader, CardBody } from "../../components/Card";
+import { CardWrapper, CardBody } from "../../components/Card";
 import { Col, Row, Container } from "../../components/Grid";
 import { FormBtn, Input } from "../../components/Form";
 import { Link } from "react-router-dom";
 
 class Home extends Component {
   
+  state = {
+  		username: "",
+  		bty_details: "",
+  		bty_price: "",
+  		expirationTimeDelta: "",
+  		bty_note: ""
+    };
+
+    handleInputChange = event => {
+      const { name, value } = event.target;
+      this.setState({
+        [name]: value
+      });
+      // console.log(this.state);
+    };
+
+    submitBounty = bountyData => {
+      console.log("Submitting bounty...");
+      console.log(`bountyData is...`);
+      console.log(this.state);
+      // TODO: call bounty functions / routing here
+    };
+
+    handleFormSubmit = event => {
+    	event.preventDefault();
+    	this.submitBounty();
+    };
+
 
   render() {
     return (
@@ -18,22 +46,25 @@ class Home extends Component {
               <CardBody>
               <form>
               	What is your name?
-              	<Input               
-              	  onChange={this.handleInputChange}
-              	  name="search_term"
+              	<Input   
+              		          
+              	  	onChange={this.handleInputChange}
+              	  	name="username"
               	/>
                 What vegetable do you want to put a bounty on?
-                <Input               
-                  onChange={this.handleInputChange}
-                  name="search_term"
+                <Input  
+               		           
+                  	onChange={this.handleInputChange}
+                  	name="bty_details"
                 />
                 What price (USD) will you put on this bounty? 
                 <Input
-                  onChange={this.handleInputChange}
-                  name="limit"
+                	
+                 	onChange={this.handleInputChange}
+                 	name="bty_price"
                 />
                 When does this bounty expire?
-            	<select className="w-100 btn btn-lg btn-outline-dark dropdown-toggle" name="expirationTimeDelta" >
+            	<select className="w-100 btn btn-lg btn-outline-dark dropdown-toggle" name="expirationTimeDelta" onChange={this.handleInputChange}>
             	    <option value="86400">1 day</option>
             	    <option value="259200">3 days</option>
             	    <option value="604800">1 week</option>
@@ -49,7 +80,7 @@ class Home extends Component {
                 Are there any other notes you want to include with this bounty? 
                 <Input
                   onChange={this.handleInputChange}
-                  name="limit"
+                  name="bty_note"
                 />
                 <FormBtn
                   onClick={this.handleFormSubmit}
