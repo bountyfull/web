@@ -22,18 +22,17 @@ class Home extends Component {
       // console.log(this.state);
     };
 
+    handleFormSubmit = event => {
+    	event.preventDefault();
+    	this.submitBounty(this.state);
+    };
+
     submitBounty = bountyData => {
       console.log("Submitting bounty...");
       console.log(`bountyData is...`);
-      console.log(this.state);
+      console.log(bountyData);
       // TODO: call bounty functions / routing here
     };
-
-    handleFormSubmit = event => {
-    	event.preventDefault();
-    	this.submitBounty();
-    };
-
 
   render() {
     return (
