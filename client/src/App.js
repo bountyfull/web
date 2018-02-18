@@ -7,8 +7,7 @@ import NoMatch from "./pages/NoMatch";
 
 const App = () =>
   <Router>
-    <div> Hello! This is the App.js file w/ routed component
-    
+    <div>    
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
